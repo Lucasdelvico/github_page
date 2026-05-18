@@ -68,7 +68,7 @@ Estudante de Tecnologia / Computação apaixonado por desenvolvimento, inovaçã
 ## 📬 Contato
 
 - 🌐 **Site:** [lucassiqueiradossantosdelvico](https://sites.google.com/view/lucassiqueiradossantosdelvico/início)
-- 💼 **LinkedIn:** [Linkedin](https://www.linkedin.com/in/lucas-delvico-243150257/)
+- 💼 **LinkedIn:** [Lucas Delvico](https://www.linkedin.com/in/lucas-delvico-243150257/)
 - 📧 **GitHub:** [@Lucasdelvico](https://github.com/Lucasdelvico)
 
 ---
