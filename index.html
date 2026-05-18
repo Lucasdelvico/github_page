@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lucas Delvico | Portfólio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --surface: #12121a;
+      --surface2: #1a1a26;
+      --accent: #7c5cfc;
+      --accent2: #c084fc;
+      --pink: #f472b6;
+      --text: #e8e8f0;
+      --muted: #6b6b8a;
+      --border: rgba(124,92,252,0.2);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* NOISE TEXTURE */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1000;
+      opacity: 0.4;
+    }
+
+    /* GLOW ORBS */
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.12;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .orb-1 { width: 600px; height: 600px; background: var(--accent); top: -200px; left: -200px; }
+    .orb-2 { width: 400px; height: 400px; background: var(--pink); bottom: -100px; right: -100px; }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.2rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(10,10,15,0.8);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.2rem;
+      background: linear-gradient(135deg, var(--accent), var(--pink));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 400;
+      transition: color 0.2s;
+      letter-spacing: 0.05em;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 8rem 2rem 4rem;
+      max-width: 1100px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .hero-content { max-width: 700px; }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      padding: 0.4rem 1rem;
+      font-size: 0.8rem;
+      color: var(--accent2);
+      margin-bottom: 2rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .hero-tag::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.3); }
+    }
+
+    h1 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      line-height: 1.05;
+      margin-bottom: 1.5rem;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, var(--accent) 0%, var(--pink) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-desc {
+      font-size: 1.15rem;
+      color: var(--muted);
+      max-width: 520px;
+      margin-bottom: 2.5rem;
+      line-height: 1.8;
+    }
+
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.8rem;
+      border-radius: 8px;
+      font-family: 'Syne', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: white;
+      box-shadow: 0 4px 24px rgba(124,92,252,0.3);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(124,92,252,0.4); }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-ghost:hover { background: var(--surface); border-color: var(--accent); }
+
+    /* SECTIONS */
+    section { padding: 5rem 2rem; max-width: 1100px; margin: 0 auto; }
+
+    .section-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+      font-weight: 500;
+    }
+
+    h2 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      margin-bottom: 3rem;
+      line-height: 1.2;
+    }
+
+    /* PROJECTS */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(124,92,252,0.05), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .project-card:hover { transform: translateY(-4px); border-color: var(--accent); }
+    .project-card:hover::before { opacity: 1; }
+
+    .project-emoji {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .project-card h3 {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 1.3rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .project-card p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+
+    .project-links { display: flex; gap: 0.75rem; flex-wrap: wrap; }
+
+    .project-link {
+      font-size: 0.8rem;
+      color: var(--accent2);
+      text-decoration: none;
+      border: 1px solid rgba(192,132,252,0.3);
+      padding: 0.3rem 0.8rem;
+      border-radius: 100px;
+      transition: all 0.2s;
+      font-weight: 500;
+    }
+    .project-link:hover { background: rgba(192,132,252,0.1); border-color: var(--accent2); }
+
+    /* SKILLS */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1rem;
+    }
+
+    .skill-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.2rem;
+      text-align: center;
+      transition: all 0.2s;
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .skill-item:hover { border-color: var(--accent); color: var(--text); background: var(--surface2); }
+
+    .skill-icon { font-size: 1.8rem; display: block; margin-bottom: 0.5rem; }
+
+    /* CONTACT */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+    }
+
+    .contact-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-decoration: none;
+      color: var(--text);
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .contact-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .contact-icon { font-size: 1.6rem; }
+    .contact-card span { font-size: 0.85rem; color: var(--muted); display: block; }
+
+    /* DIVIDER */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+      margin: 0 2rem;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 3rem 2rem;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    footer span { color: var(--accent2); }
+
+    /* ANIMATIONS */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.7s ease forwards;
+    }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.35s; }
+    .delay-4 { animation-delay: 0.5s; }
+  </style>
+</head>
+<body>
+
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+
+  <nav>
+    <div class="nav-logo">LD.</div>
+    <ul class="nav-links">
+      <li><a href="#projetos">Projetos</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-content">
+      <div class="hero-tag fade-in">Estudante de Tecnologia</div>
+      <h1 class="fade-in delay-1">
+        Lucas<br/>
+        <span class="gradient-text">Delvico</span>
+      </h1>
+      <p class="hero-desc fade-in delay-2">
+        Desenvolvedor em formação, apaixonado por tecnologia, inovação e criação de soluções digitais que fazem a diferença.
+      </p>
+      <div class="hero-btns fade-in delay-3">
+        <a href="#projetos" class="btn btn-primary">Ver Projetos →</a>
+        <a href="https://github.com/Lucasdelvico" target="_blank" class="btn btn-ghost">GitHub ↗</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- PROJETOS -->
+  <section id="projetos">
+    <p class="section-label">Portfólio</p>
+    <h2>Projetos em <span class="gradient-text">Destaque</span></h2>
+    <div class="projects-grid">
+
+      <div class="project-card">
+        <span class="project-emoji">🎵</span>
+        <h3>MusicSeat</h3>
+        <p>Startup digital que conecta músicos e artistas de diversas formas — compra e venda de produtos, interações entre usuários e busca por aparelhagem. A maior referência no ecossistema musical.</p>
+        <div class="project-links">
+          <a href="https://docs.google.com/document/d/1QfWDHXmpxlF89sqVdBYiX41ZOSEvuQ7OntJ0qwS9Hcw/edit?usp=sharing" target="_blank" class="project-link">📄 Docs</a>
+          <a href="https://docs.google.com/presentation/d/1bqTk9LDb29fju60-IbW0OFJ8FatyO1whKqyPQydeNmw/edit?usp=sharing" target="_blank" class="project-link">🎞 Slides</a>
+          <a href="https://sites.google.com/view/lucassiqueiradossantosdelvico/início" target="_blank" class="project-link">🌐 Site</a>
+          <a href="https://youtu.be/4PF6fG25B0g" target="_blank" class="project-link">▶ YouTube</a>
+        </div>
+      </div>
+
+      <div class="project-card">
+        <span class="project-emoji">📦</span>
+        <h3>PortfolioHUB</h3>
+        <p>Repositório central com versionamento Git/GitHub para organização e compartilhamento de projetos acadêmicos e pessoais. Estruturado com boas práticas de documentação e versionamento.</p>
+        <div class="project-links">
+          <a href="https://github.com/Lucasdelvico" target="_blank" class="project-link">🐙 GitHub</a>
+          <a href="https://lucasdelvico.github.io" target="_blank" class="project-link">🌐 Pages</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <p class="section-label">Tecnologias</p>
+    <h2>Skills & <span class="gradient-text">Ferramentas</span></h2>
+    <div class="skills-grid">
+      <div class="skill-item"><span class="skill-icon">🔧</span>Git</div>
+      <div class="skill-item"><span class="skill-icon">🐙</span>GitHub</div>
+      <div class="skill-item"><span class="skill-icon">🌐</span>HTML5</div>
+      <div class="skill-item"><span class="skill-icon">🎨</span>CSS3</div>
+      <div class="skill-item"><span class="skill-icon">📄</span>Google Docs</div>
+      <div class="skill-item"><span class="skill-icon">📊</span>Google Slides</div>
+      <div class="skill-item"><span class="skill-icon">🏗</span>GitHub Pages</div>
+      <div class="skill-item"><span class="skill-icon">💼</span>LinkedIn</div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- CONTATO -->
+  <section id="contato">
+    <p class="section-label">Conecte-se</p>
+    <h2>Entre em <span class="gradient-text">Contato</span></h2>
+    <div class="contact-grid">
+      <a href="https://github.com/Lucasdelvico" target="_blank" class="contact-card">
+        <span class="contact-icon">🐙</span>
+        <div>
+          <strong>GitHub</strong>
+          <span>@Lucasdelvico</span>
+        </div>
+      </a>
+      <a href="https://sites.google.com/view/lucassiqueiradossantosdelvico/início" target="_blank" class="contact-card">
+        <span class="contact-icon">🌐</span>
+        <div>
+          <strong>Portfólio</strong>
+          <span>Ver site completo</span>
+        </div>
+      </a>
+      <a href="https://youtu.be/4PF6fG25B0g" target="_blank" class="contact-card">
+        <span class="contact-icon">▶</span>
+        <div>
+          <strong>YouTube</strong>
+          <span>Apresentação do projeto</span>
+        </div>
+      </a>
+      <a href="https://linkedin.com/in/lucasdelvico" target="_blank" class="contact-card">
+        <span class="contact-icon">💼</span>
+        <div>
+          <strong>LinkedIn</strong>
+          <span>Conectar profissionalmente</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    Feito com <span>♥</span> por <span>Lucas Siqueira dos Santos Delvico</span> · 2026
+  </footer>
+
+</body>
+</html>
