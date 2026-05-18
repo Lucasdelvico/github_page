@@ -36,7 +36,6 @@ Estudante de Tecnologia / Computação apaixonado por desenvolvimento, inovaçã
   - 📄 [Documentação](https://docs.google.com/document/d/1QfWDHXmpxlF89sqVdBYiX41ZOSEvuQ7OntJ0qwS9Hcw/edit?usp=sharing)
   - 🎞️ [Apresentação](https://docs.google.com/presentation/d/1bqTk9LDb29fju60-IbW0OFJ8FatyO1whKqyPQydeNmw/edit?usp=sharing)
   - 🌐 [Site](https://sites.google.com/view/lucassiqueiradossantosdelvico/início)
-  - 🎬 [Apresentação em Vídeo](https://youtu.be/4PF6fG25B0g)
 
 ---
 
@@ -69,7 +68,7 @@ Estudante de Tecnologia / Computação apaixonado por desenvolvimento, inovaçã
 ## 📬 Contato
 
 - 🌐 **Site:** [lucassiqueiradossantosdelvico](https://sites.google.com/view/lucassiqueiradossantosdelvico/início)
-- 💼 **LinkedIn:** [Adicionar ao LinkedIn](https://linkedin.com/in/lucasdelvico)
+- 💼 **LinkedIn:** [Linkedin](https://www.linkedin.com/in/lucas-delvico-243150257/)
 - 📧 **GitHub:** [@Lucasdelvico](https://github.com/Lucasdelvico)
 
 ---
