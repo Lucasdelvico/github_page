@@ -1,8 +1,8 @@
 import time
 
-class MeusProgramas:
+class Cronometro:
 
-    def cronometro(self):
+    def executar(self):
         print("\n CRONÔMETRO")
         input("Pressione ENTER para iniciar e ENTER para parar...")
         inicio = time.time()
@@ -10,79 +10,85 @@ class MeusProgramas:
         fim = time.time()
         print(f"Tempo: {round(fim - inicio, 2)} segundos\n")
 
-    def temporizador(self):
+
+class Temporizador:
+
+    def executar(self):
         print("\n TEMPORIZADOR")
         segundos = int(input("Segundos: "))
         for i in range(segundos, 0, -1):
             print(f"Restam: {i}s")
             time.sleep(1)
-        print("acabou o tempo!\n")
- 
-    def calculadora_imc(self):
+        print("Acabou o tempo!\n")
+
+
+class CalculadoraIMC:
+
+    def executar(self):
         print("\n CALCULADORA IMC")
         peso = float(input("Peso (kg): "))
         altura = float(input("Altura (m): "))
         imc = peso / (altura * altura)
         print(f"Seu IMC: {round(imc, 2)}\n")
 
-    def media_notas(self):
+
+class MediaNotas:
+
+    def executar(self):
         print("\n MÉDIA DE NOTAS")
         n1 = float(input("Nota 1: "))
         n2 = float(input("Nota 2: "))
         media = (n1 + n2) / 2
         print(f"Média final: {media}\n")
 
+
+class Menu:
+
+    def __init__(self):
+        self.cronometro = Cronometro()
+        self.temporizador = Temporizador()
+        self.imc = CalculadoraIMC()
+        self.media = MediaNotas()
+
     def pasta_tempo(self):
         while True:
-            print("\n[PASTA 1: manipuladores de tempo]")
-            print("1 - Cronômetro")
-            print("2 - Temporizador")
-            print("0 - Voltar ao Menu Principal")
-            opcao = input("Escolha um programa: ")
+            print("\n[PASTA 1: Tempo]")
+            print("1 - Cronômetro | 2 - Temporizador | 0 - Voltar")
+            opcao = input("Escolha: ")
 
             if opcao == "1":
-                self.cronometro()
+                self.cronometro.executar()
             elif opcao == "2":
-                self.temporizador()
+                self.temporizador.executar()
             elif opcao == "0":
-                break  
-            else:
-                print("Opção inválida!")
+                break
 
     def pasta_calculadoras(self):
         while True:
             print("\n[PASTA 2: Calculadoras]")
-            print("1 - Calculadora de IMC")
-            print("2 - Média de Notas")
-            print("0 - Voltar ao Menu Principal")
-            opcao = input("Escolha um programa: ")
+            print("1 - IMC | 2 - Média de Notas | 0 - Voltar")
+            opcao = input("Escolha: ")
 
             if opcao == "1":
-                self.calculadora_imc()
+                self.imc.executar()
             elif opcao == "2":
-                self.media_notas()
+                self.media.executar()
             elif opcao == "0":
-                break  
-            else:
-                print("Opção inválida!")
+                break
 
-    def menu_principal(self):
+    def principal(self):
         while True:
-            print("\nPROGRAMAS ")
-            print("1 - Abrir Pasta: manipuladores de Tempo")
-            print("2 - Abrir Pasta: Calculadoras")
-            print("0 - Fechar tudo")
-            opcao = input("Escolha uma pasta: ")
+            print("\n=== MENU PRINCIPAL ===")
+            print("1 - Tempo | 2 - Calculadoras | 0 - Sair")
+            opcao = input("Escolha: ")
 
             if opcao == "1":
                 self.pasta_tempo()
             elif opcao == "2":
                 self.pasta_calculadoras()
             elif opcao == "0":
-                print("encerrando programa...")
+                print("Encerrando...")
                 break
-            else:
-                print("Pasta não encontrada!")
 
-software = MeusProgramas()
-software.menu_principal()
+app = Menu()
+app.principal()
