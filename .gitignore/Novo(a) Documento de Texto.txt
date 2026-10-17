@@ -1,0 +1,14 @@
+Arquivos de cache do Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+Ambientes virtuais
+.env
+.venv/
+env/
+
+Arquivos de sistema operacional
+.DS_Store
+Thumbs.db
