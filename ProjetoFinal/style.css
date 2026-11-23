@@ -125,7 +125,7 @@ body {
     padding: 10px 0;
 }
 
-/* Esconde a barra de rolagem nativa para o visual ficar limpo */
+/* Esconde a barra de rolagem nativa */
 .product-grid::-webkit-scrollbar {
     display: none;
 }
