@@ -11,7 +11,7 @@ function carregarProdutos(produtos, idContainer) {
     `).join('');
 }
 
-// Lógica de Scroll Horizontal para os botões do carrossel
+// Carrossel
 function scrollSection(idContainer, direcao) {
     const container = document.getElementById(idContainer);
     const scrollAmount = 250; // Distância do clique em pixels
