@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Black Notes | Guitars & Gear</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="top-bar">BEM VINDO(A) AO SITE!</div>
+
+  <header class="main-header">
+    <a href="#" class="logo" id="logoHome">BLACK <span>NOTES</span></a>
+
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Pesquisa">
+      <button type="button" class="search-btn" id="searchBtn">&#128269;</button>
+    </div>
+
+    <div class="header-actions">
+      <button type="button" class="icon-btn" id="filterToggleBtn" title="Filtros">&#9661;</button>
+      <button type="button" class="icon-btn" id="cartOpenBtn" title="Carrinho">
+        &#128722; <span class="cart-count" id="cartCount">0</span>
+      </button>
+      <button type="button" class="register-btn" id="registerBtn">Cadastro</button>
+    </div>
+  </header>
+
+  <nav class="nav-categories" id="navCategories">
+    <ul>
+      <li><a href="#" data-cat="Todos" class="active">Home</a></li>
+      <li><a href="#" data-cat="Guitarras">Guitarras</a></li>
+      <li><a href="#" data-cat="Contrabaixos">Contrabaixos</a></li>
+      <li><a href="#" data-cat="Violão">Violão</a></li>
+      <li><a href="#" data-cat="Pedais">Pedais</a></li>
+      <li><a href="#" data-cat="Acessórios">Acessórios</a></li>
+      <li><a href="#" data-cat="Promoções">Promoções</a></li>
+    </ul>
+  </nav>
+
+  <div class="filter-bar" id="filterBar" hidden>
+    <select id="priceFilter">
+      <option value="99999">Qualquer preço</option>
+      <option value="300">Até R$ 300</option>
+      <option value="1000">Até R$ 1.000</option>
+      <option value="2500">Até R$ 2.500</option>
+    </select>
+
+    <select id="sortFilter">
+      <option value="padrao">Ordenar: Destaque</option>
+      <option value="menor">Menor preço</option>
+      <option value="maior">Maior preço</option>
+      <option value="az">Nome A–Z</option>
+    </select>
+
+    <button type="button" class="small-btn" id="clearFilterBtn">Limpar</button>
+  </div>
+
+  <!-- CARROSSEL PRINCIPAL -->
+  <section class="hero-section">
+    <div class="banner-carousel">
+      <button type="button" class="slide-arrow prev" id="bannerPrev">&#10094;</button>
+
+      <div class="banner-track" id="bannerTrack">
+        <div class="banner-slide">
+          <img src="https://images.unsplash.com/photo-1510915361894-db8b60106cb1?auto=format&fit=crop&w=1400&q=80" alt="Guitarra elétrica em estúdio">
+          <div class="banner-overlay">
+            <span class="banner-tag">BLACK NOTES SERIES</span>
+            <h1>Feitas para sons intensos</h1>
+            <p>Guitarras e instrumentos desenhados para palco, estúdio e alta performance.</p>
+            <button type="button" class="gold-cta" onclick="selecionarCategoria('Guitarras')">EXPLORAr GUITARRAS</button>
+          </div>
+        </div>
+
+        <div class="banner-slide">
+          <img src="https://images.unsplash.com/photo-1550291652-6ea9114a47b1?auto=format&fit=crop&w=1400&q=80" alt="Guitarra elétrica acabamento clássico">
+          <div class="banner-overlay">
+            <span class="banner-tag">PEÇAS LIMITADAS</span>
+            <h2>PROMOÇÕES DO MOMENTO</h2>
+            <p>Modelos selecionados com condições especiais por tempo limitado.</p>
+            <button type="button" class="gold-cta" onclick="selecionarCategoria('Promoções')">VER OFERTAS</button>
+          </div>
+        </div>
+
+        <div class="banner-slide">
+          <img src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?auto=format&fit=crop&w=1400&q=80" alt="Pedais e setup de guitarra">
+          <div class="banner-overlay">
+            <span class="banner-tag">PEÇAS ESSENCIAIS</span>
+            <h2>PEDAIS, CORDAS E MAIS!</h2>
+            <p>Tudo o que você precisa para montar o seu ambiente completo.</p>
+            <button type="button" class="gold-cta" onclick="selecionarCategoria('Pedais')">VER ACESSÓRIOS</button>
+          </div>
+        </div>
+      </div>
+
+      <button type="button" class="slide-arrow next" id="bannerNext">&#10095;</button>
+      <div class="banner-dots" id="bannerDots"></div>
+    </div>
+  </section>
+
+  <main class="container">
+    <section class="section-block">
+      <div class="section-top">
+        <h2 class="section-title" id="tituloDestaque">Produtos em destaque</h2>
+        <span class="section-sub" id="contadorItens"></span>
+      </div>
+      <div class="carousel-container">
+        <button type="button" class="slide-arrow prev" onclick="scrollSection('destaque', -1)">&#10094;</button>
+        <div class="product-grid" id="destaque"></div>
+        <button type="button" class="slide-arrow next" onclick="scrollSection('destaque', 1)">&#10095;</button>
+      </div>
+    </section>
+
+    <section class="section-block">
+      <div class="section-top">
+        <h2 class="section-title">Acessórios</h2>
+      </div>
+      <div class="carousel-container">
+        <button type="button" class="slide-arrow prev" onclick="scrollSection('cordas', -1)">&#10094;</button>
+        <div class="product-grid" id="cordas"></div>
+        <button type="button" class="slide-arrow next" onclick="scrollSection('cordas', 1)">&#10095;</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div><strong>BLACK <span>NOTES</span></strong> — Guitarras, Contrabaixos e Acessórios</div>
+    <small>© 2026 Black Notes</small>
+  </footer>
+
+  <!-- CARRINHO -->
+  <div class="cart-backdrop" id="cartBackdrop" hidden></div>
+  <aside class="cart-drawer" id="cartDrawer">
+    <div class="cart-header">
+      <h3>CARRINHO</h3>
+      <button type="button" id="cartCloseBtn">&times;</button>
+    </div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-footer">
+      <div class="cart-total">Total: <strong id="cartTotal">R$ 0,00</strong></div>
+      <button type="button" class="buy-btn" id="checkoutBtn">FINALIZAR COMPRA</button>
+      <p class="cart-msg" id="cartMsg"></p>
+    </div>
+  </aside>
+
+  <!-- MODAL CADASTRO -->
+  <div class="modal-backdrop" id="modalBackdrop" hidden></div>
+  <div class="modal-box" id="registerModal" hidden>
+    <div class="modal-top">
+      <h3>CADASTRO</h3>
+      <button type="button" id="closeModalBtn">&times;</button>
+    </div>
+    <form id="registerForm">
+      <input type="text" id="regName" placeholder="Seu nome" required>
+      <input type="email" id="regEmail" placeholder="Seu e-mail" required>
+      <button type="submit" class="buy-btn">CADASTRAR</button>
+      <p class="cart-msg" id="regMsg"></p>
+    </form>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
