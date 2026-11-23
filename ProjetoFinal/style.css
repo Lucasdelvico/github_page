@@ -1,0 +1,182 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #ffffff;
+    color: #333;
+}
+
+/* HEADER */
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 4%;
+    border-bottom: 2px solid #000;
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.logo span {
+    font-size: 16px;
+    font-weight: normal;
+}
+
+.search-bar {
+    display: flex;
+    flex: 0 1 400px;
+    border: 2px solid #ccc;
+    border-radius: 25px;
+    overflow: hidden;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 8px 15px;
+    border: none;
+    outline: none;
+}
+
+.search-btn {
+    background: none;
+    border: none;
+    padding: 0 15px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.icon-btn {
+    background: none;
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.register-btn {
+    border: 2px solid #000;
+    background: none;
+    padding: 8px 20px;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* NAVBAR DE CATEGORIAS */
+.nav-categories {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+}
+
+.nav-categories ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-categories a {
+    text-decoration: none;
+    color: #000;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+/* CONTAINER DE PRODUTOS */
+.container {
+    padding: 30px 4%;
+}
+
+.section-block {
+    margin-bottom: 40px;
+}
+
+.section-title {
+    font-size: 22px;
+    margin-bottom: 20px;
+    font-weight: normal;
+}
+
+.carousel-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+/* A MÁGICA DA GRADE HORIZONTAL */
+.product-grid {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    width: 100%;
+    padding: 10px 0;
+}
+
+/* Esconde a barra de rolagem nativa para o visual ficar limpo */
+.product-grid::-webkit-scrollbar {
+    display: none;
+}
+
+/* CARD DO PRODUTO */
+.product-card {
+    min-width: 180px;
+    flex: 0 0 auto;
+    background: #fff;
+    text-align: left;
+}
+
+.product-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: contain;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+}
+
+.product-name {
+    font-size: 13px;
+    margin-top: 8px;
+    color: #444;
+    line-height: 1.4;
+    height: 36px;
+    overflow: hidden;
+}
+
+.product-price {
+    font-size: 15px;
+    font-weight: bold;
+    margin-top: 5px;
+    color: #000;
+}
+
+/* SETAS DO CARROSSEL */
+.slide-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid #ccc;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    font-size: 14px;
+}
+
+.prev { left: -15px; }
+.next { right: -15px; }

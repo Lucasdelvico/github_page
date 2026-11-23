@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Black Notes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="logo"><span>Black Notes</span></div>
+        <div class="search-bar">
+            <input type="text" placeholder="Pesquisar...">
+            <button class="search-btn">&#128269;</button>
+        </div>
+        <div class="header-actions">
+            <button class="icon-btn">&#9661;</button> <!-- Filtro -->
+            <button class="icon-btn">&#128722;</button> <!-- Carrinho -->
+            <button class="register-btn">Cadastro</button>
+        </div>
+    </header>
+
+    <nav class="nav-categories">
+        <ul>
+            <li><a href="#">Acessórios</a></li>
+            <li><a href="#">Guitarras</a></li>
+            <li><a href="#">Contrabaixos</a></li>
+            <li><a href="#">Violão</a></li>
+            <li><a href="#">Pedais</a></li>
+            <li><a href="#">Promoções</a></li> 
+        </ul>
+    </nav>
+    <!-- SEÇÃO 1: PRODUTOS EM DESTAQUE (Com scroll/carrossel) -->
+    <main class="container">
+        <section class="section-block">
+            <h2 class="section-title">Produtos em destaque</h2>
+            <div class="carousel-container">
+                <button class="slide-arrow prev" onclick="scrollSection('destaque', -1)">&#10094;</button>
+                <div class="product-grid" id="destaque">
+                    <!-- Inserido dinamicamente via JS -->
+                </div>
+                <button class="slide-arrow next" onclick="scrollSection('destaque', 1)">&#10095;</button>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 2: CORDAS -->
+        <section class="section-block">
+            <h2 class="section-title">Cordas</h2>
+            <div class="carousel-container">
+                <button class="slide-arrow prev" onclick="scrollSection('cordas', -1)">&#10094;</button>
+                <div class="product-grid" id="cordas">
+                    <!-- Inserido dinamicamente via JS -->
+                </div>
+                <button class="slide-arrow next" onclick="scrollSection('cordas', 1)">&#10095;</button>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
